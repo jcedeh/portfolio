@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Dashboard – Excel Project</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+    h1, h2, h3 {
+      color: #f88f06;
+    }
+    img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      margin-top: 10px;
+      margin-right: 10px;
+      background: #0a3d62;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #145a88;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📊 WISABI BANK ATM TRANSACTIONS ANALYSIS</h1>
+
+    <p><strong>Summary:</strong>  
+    Wisabi Bank is a leading financial institution in Nigeria, 
+    headquartered in Lagos with branches in Kano, Rivers State, Enugu, and FCT Abuja. 
+    Wisabi Bank provides a wide range of financial services to its customers, 
+    including savings accounts, current accounts, loans, 
+    and investments.</p>
+
+    <h2>🎯 Objective</h2>
+    <p>The objective of this analysis is to generate insights that will help the bank to understand 
+      its ATM transactions data and improve its operations</p>
+
+    <h2>🛠️ Tools Used</h2>
+    <ul>
+      <li>Microsoft Excel</li>
+      <li>Power BI</li>
+      <li>Microsoft Word</li>
+    </ul>
+
+    <h2>📁 Dataset Overview</h2>
+    <ul>
+      <li>The ATM transactions data includes the Transactions fact table, 
+        Location dimension table, Customers Dimension table, 
+        Transaction Type Dimension Table. </li>
+      <li>The Transactions fact table cut across 5 different location tables 
+        (Enugu, Rivers, FCT, Lagos and Kano), saved in different worksheets.</li>
+      <li>Each fact table has same 7 columns and a minimum of 300,000 rows. </li>
+    </ul>
+    <img src="/massively-master/images/pictures/dataset.PNG" alt="">
+  
+
+    <h2>🧹 Data Cleaning</h2>
+    <ul>
+      <li>Created a Calendar table.</li>
+      <li>Extracted time from the TransactionStartTime and 
+        TransactionEndTime columns to create Start Time and End Time columns.</li>
+      <li>Calculated Transaction Duration by finding the 
+        difference between Start Time and End Time.</li>
+            <img src="/massively-master//images/pictures/transaction duration.PNG" alt="">
+      <li>Created a time_of_day column using a SWITCH statement 
+        to group the Start Time values into Night, Morning, Afternoon, and Evening categories.</li>
+          <img src="/massively-master/images/pictures/time of day.PNG" alt="">
+      <li>Created an Amount table using the DAX UNION function to combine 
+        all transaction amount columns across all tables</li>
+        <img src="/massively-master/images/pictures/all amounts.PNG" alt="">
+      <li>Binned the Amount column in the Amount table into intervals of ₦10,000.</li>
+      <li>Created a time_period dimension table to link time periods across all tables.</li>
+      <li>Created a Time Table with an Hour column to synchronize time across all tables.</li>
+      <li>Developed a DAX measure to calculate the average transaction amount.</li>
+          <img src="/massively-master/images/pictures/overall amount average.PNG" alt="">
+      <li>Developed a DAX measure to calculate the overall average transaction duration amount.</li>
+          <img src="/massively-master/images/pictures/average duration.PNG" alt="">
+      <li>Developed a DAX measure to calculate the overall transaction amount.</li>
+          <img src="/massively-master/images/pictures/overall trans. amount.PNG" alt="">
+      <li>Developed a DAX measure to calculate the total number of transactions.</li>
+          <img src="/massively-master/images/pictures/overall number of trans..PNG" alt="">
+    </ul>
+
+    <h2>📈 Key Insights</h2>
+    <article>
+        <p>Wisabi Bank, one of Nigeria’s leading financial institutions headquartered in Lagos, operates branches across Kano, 
+          Rivers State, Enugu, and the Federal Capital Territory (FCT) Abuja. With a wide portfolio of financial services including 
+          savings accounts, current accounts, loans, and investments, the bank’s ATM network is a crucial touchpoint for customer interaction.
+          This analysis examines the bank’s ATM transaction data to uncover trends, patterns, and opportunities for operational improvement.</p>
+
+        <p>Across all states, the total transaction amount reached an impressive ₦39 billion, with an average transaction amount of ₦17,980. 
+          The network processed approximately 2 million transactions during the period under review.</p>
+
+        <p>Lagos is the top-performing location with the highest average transaction amount. Most transactions in Lagos are withdrawals, 
+        averaging ₦23,300, followed by transfers at ₦20,900. No balance inquiries were made in Lagos during the analysis period. 
+        FCT comes next with a similar pattern, while Kano has the lowest transaction volume and value.</p>
+              <img src="/massively-master/images/pictures/avg. trans by state trans type.PNG" alt="">
+        
+        <p>When looking at transaction frequency by time of day, Lagos once again leads. 
+          The afternoon period (12 p.m. – 6 p.m.) sees the highest activity with 320,000 transactions, followed by 
+          evenings (230,000) and mornings (200,000). Kano follows Lagos in afternoon and morning activity, 
+          while Port Harcourt records the lowest daily transactions.</p>
+              <img src="/massively-master/images/pictures/trans cout by location.PNG" alt="">
+
+        <p>Customers aged 35 and above account for the highest number of transactions, dominated by withdrawals worth ₦10.7 billion, 
+          followed by transfers worth ₦4.1 billion. The 25–35 age group follows, also favoring withdrawals.</p>
+              <img src="/massively-master/images/pictures/age group trans type.PNG" alt="">
+
+        <p>In terms of professions, Human Resource Specialists in the 35+ age group lead with an average transaction amount of ₦20,389 
+          across 672 transactions. Electricians aged 25–35 follow with an average of ₦19,663 over 645 transactions, 
+          while Welders in the same age range have the lowest average transaction amount (₦17,467) despite a higher transaction count (742).</p>
+              <img src="/massively-master/images/pictures/trans by occup.PNG" alt="">
+
+        <p>There is a consistent correlation between transaction volume and transaction amount, both showing similar month-to-month fluctuations. 
+          March stands out as the peak month with ₦353 million in transaction value and 196,327 transactions. 
+          February recorded the lowest figures at ₦290 million and 161,418 transactions. Months such as May, July, October, 
+          and December maintained upward trends, while April, June, August, September, and November followed a downward pattern.</p>
+              <img src="/massively-master/images/pictures/trans volum, amount by month.PNG" alt="">
+
+        <p>Across all locations, withdrawals remain the most common transaction type, followed by transfers. 
+          These transactions are largely conducted by Wisabi Bank customers. Lagos ranks first in transaction counts, 
+          followed by Kano, with Rivers State trailing.</p>
+              <img src="/massively-master/images/pictures/trans typ by variat.PNG" alt="">
+
+        <p>Within Lagos, withdrawals account for 19.58% of transactions, transfers for 7.8%, deposits for 3.9%, and balance inquiries 
+          for 3.92%. Withdrawals are most frequent in the afternoon, contributing 8.35% to the 15% total transactions during that period.</p>
+              <img src="/massively-master/images/pictures/percentage.PNG" alt="">
+
+        <p>Most transactions are between ₦0 and ₦10,000, with a total of 923,521 transactions. Next are ₦10,000–₦20,000 with 436,387 
+          transactions and ₦20,000–₦30,000 with 406,888 transactions. The least common is ₦30,000–₦40,000 with 25,511 transactions, 
+          while ₦40,000–₦50,000 has 273,604. Large transactions of ₦90,000–₦100,000 total 77,927, with some outliers found in this range.</p>
+              <img src="/massively-master/images/pictures/distribution.PNG" alt="">
+
+        <p>Lekki ATM is used the most, followed by Ikorodu. Surprisingly, Sabon Gari ATM has more transactions than Ikorodu but handles 
+          less money, meaning it is not fully used in terms of value. This shows that the number of transactions alone doesn’t fully 
+          measure ATM performance; the amount of money transacted also matters.</p>
+              <img src="/massively-master/images/pictures/utiliz rate.PNG" alt="">
+
+        <p>In terms of transaction duration, Kano customers have the highest average at 4.89 minutes, driven mostly by factory workers 
+          (average 5.50 minutes), plumbers, and welders. FCT follows with an average of 4.18 minutes, led by mechanics who are non-Wisabi 
+          customers. Enugu records the shortest transaction duration at 3.67 minutes, dominated by farmers performing withdrawals.</p>
+              <img src="/massively-master/images/pictures/avg trns by locat.PNG" alt="">
+              <img src="/massively-master/images/pictures/kano duration.PNG" alt="">
+    </article>
+
+    <h2>💡Reccommendations</h2>
+        <ul>
+          <li><strong>Enhance ATM Capacity in High-Demand Locations:</strong> Deploy additional ATMs or optimize machine uptime in Lagos and 
+            Kano, particularly in the afternoons, to meet demand surges and reduce wait times.</li>
+          <li><strong>Targeted Marketing by Age Group & Profession:</strong> Make special withdrawal and transfer offers for customers aged 35 
+            and above, and for professionals like HR specialists and electricians. Give discounts on transaction fees or loyalty rewards to welders 
+            and other customers who make many small transactions, so they keep using the bank’s services.</li>
+          <li><strong>Balance ATM Network Utilization:</strong> Review the location of low-performing ATMs like Sabon Gari and either move 
+            them to a better spot or change the marketing plan to bring in more high-value transactions.</li>
+          <li><strong>Seasonal Demand Planning:</strong> Get ready for busy transaction months like March by stocking enough cash in ATMs and 
+            planning maintenance ahead of time.</li>
+          <li><strong>Encourage Higher-Value Transactions:</strong> Give rewards or benefits for medium to high withdrawals and transfers, 
+            especially for amounts between ₦30,000 and ₦40,000 where fewer transactions happen.</li>
+          <li><strong>Reduce Transaction Duration:</strong> Investigate the causes of longer transaction durations in Kano and FCT, 
+            particularly for factory workers and mechanics, and streamline machine processes or provide user assistance.</li>
+        </ul>
+
+    <h2>📸 Dashboard Screenshot</h2>
+    <img src="/massively-master/images/pictures/1.PNG" alt="dashboard page 1">
+    <img src="/massively-master/images/pictures/2.PNG" alt="dashboard page 2">
+    <img src="/massively-master/images/pictures/3.PNG" alt="dasboard page 3">
+
+
+
+    <h2>📥 Files</h2>
+    <a href="https://drive.google.com/file/d/1baehtY_xSQp1f2jK3frZFjynWqYLjYSU/view?usp=sharing" class="button" target="_blank">Download Excel File</a>
+    <a href="https://drive.google.com/file/d/1rzydxM0tj9AQJTxzTK8j_3T0maiHKP6d/view?usp=sharing" class="button" target="_blank">Download Dashboard</a>
+
+   
+  </div>
+
+</body>
+</html>

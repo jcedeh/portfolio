@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Dashboard – Excel Project</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+    h1, h2, h3 {
+      color: #6C1D45;
+    }
+    img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      margin-top: 10px;
+      margin-right: 10px;
+      background: #0a3d62;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #145a88;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📊 Forggith Pharmaceuticals Sales and Marketing Analysis</h1>
+
+    <p><strong>Summary:</strong> Forggith Pharmaceuticals (Forggith) is a Pharmaceutical Manufacturing 
+      company based in Germany. As a Manufacturing company, they produce medical drugs which get to the 
+      consumers through their Distributors.
+    </p>
+
+    <p>
+      In their efforts to maximize growth, Forggith works with a team of Sales and Marketing pros 
+        who ensure retailers are able to get their products through the distributors. 
+        That is, Forggith does not sell directly to retailers or end-users, they sell to Distributors. 
+          But they maintain interaction with retailers, through their Sales and Marketing pros.
+    </p>
+
+    <h2>Power BI Reporting Requirement.</h2>
+    
+    <p>Forggith is looking to create some Power BI Reports to assist in guiding their strategies, 
+      tactics and operations as a company. For a start, they have identified a couple of numbers they will 
+      like to report from their data as reports.
+        <ol>
+          <li>	Sales Performance Overview (Sliced by: Year, Month, Quarter, Team)</li>
+            <ul>
+              <li>1.	Total  Revenue</li>
+              <li>2.	Total Revenue Year To Date (YTD)</li>
+              <li>3.	Total Revenue Previous Year YTD</li>
+              <li>4.	Total Revenue Same Period Last Year(SPLY)</li>
+              <li>5.	Total Target</li>
+              <li>6.	Total TargetYTD</li>
+              <li>7.	Actual Revenue Performance YTD vs Target YTD</li>
+              <li>8.	Revenue Month on Month Percentage Change</li>
+              <li>9.	Revenue Distribution by Location</li>
+              <li>10.	Revenue by Channel</li>
+              <li>11.	Revenue by Product Class</li>
+            </ul>
+            <li>	Marketing Performance (Slice by Year, Quarter, Month, Product Category and Team)</li>
+              <ul>
+                <li>1.	Revenue Achieved vs Revenue Target</li>
+                <li>2.	Volume Achieved vs Volume Target</li>
+                <li>3.	Actual Revenue by Sales Representative</li>
+                <li>4.	Target Revenue Achievement% by Sales Representative</li>
+                <li>5.	Actual Volume by Sales Representative</li>
+                <li>6.	Target Volume Achievement by Sales Representative</li>
+                <li>7.	Actual Revenue Achievement by Sales Team</li>
+                <li>8.	Revenue and Volume Achievement by Product.</li>
+              </ul>
+        </ol>
+
+    </p>
+
+  
+    <h2>🎯 Objective</h2>
+    <p>Forggith is looking to create some Power BI Reports to assist in guiding their strategies, 
+      tactics and operations as a company. </p>
+
+    <h2>🛠️ Tools Used</h2>
+    <ul>
+      <li>Microsoft Excel</li>
+      <li>Power BI</li>
+      <li>DAX STUDIO</li>
+      <li>Microsoft Word</li>
+    </ul>
+
+   
+    
+      
+
+    <h2>📁 Dataset Overview</h2>
+    <p>
+      The dataset used for this project is stored in two different Excel workbooks: 
+      the Actual Dataset and the Target Dataset.
+    </p>
+    <p>
+      The Target Dataset contains the following columns: product_id, sales_rep_id, month, 
+      and the target years 2022, 2023, and 2025. The values under these year columns represent the 
+      expected sales amounts for each sales representative.
+    </p>
+    <p>
+      The Actual Dataset workbook comprises seven sheets, which include information on supporting dimensions 
+      such as products, employees, locations, and channels, as well as the actual sales records for the years 
+      2022 through 2025.
+    </p>
+    
+    
+    <h2>🧹  Data Cleaning and Transformation:</h2>
+    <p>
+      In preparing the dataset for analysis, I first noted that the Actual Sales and Target Sales tables were 
+      maintained as two separate fact tables. This was necessary because they exist at different levels of granularity, 
+      and therefore establishing a direct relationship between them would not be appropriate.
+    </p>
+
+    <p>
+      To streamline the Actual Sales data, I appended the 2023–2025 sales sheets to the 2022 sales sheet, 
+      consolidating them into a single unified table. I then pivoted the year columns (2022, 2023, 2024) into a 
+      single column to create a proper structure where each row represents a year with its corresponding values.
+    </p>
+    <p style="text-align: center;"><em>before pivot</em></p>
+    <img src="/massively-master/images/pharm/before pivot.PNG" alt="">
+    <p style="text-align: center;"><em>after pivot</em></p>
+    <img src="/massively-master/images/pharm/after pivot.PNG" alt="">
+
+    <p>
+      For the data model, I implemented a star schema, establishing relationships between the fact tables and their 
+      corresponding dimension tables. One key challenge arose with the Channel and Subchannel dimensions. 
+      The Channel dimension could not be directly related to the fact table, and linking Channel to Subchannel 
+      would have violated the star schema principle of dimension-to-fact relationships. To resolve this, 
+      I merged Channel and Subchannel into a single dimension table, ensuring a clean and compliant model design.
+      For the data model, I implemented a star schema, establishing relationships between the fact tables and their 
+      corresponding dimension tables. One key challenge arose with the Channel and Subchannel dimensions. 
+      The Channel dimension could not be directly related to the fact table, and linking Channel to Subchannel 
+      would have violated the star schema principle of dimension-to-fact relationships. To resolve this, 
+      I merged Channel and Subchannel into a single dimension table, ensuring a clean and compliant model design.
+    </p>
+    <p style="text-align: center;"><em>data model</em></p>
+    <img src="/massively-master/images/pharm/data modelling.PNG" alt="">
+
+    <p>
+      Additionally, I created a Calendar table using the CALENDARAUTO() function to support time intelligence 
+      calculations and enhance trend analysis across the dataset.
+    </p>
+
+    <h2>📈 Key Insights</h2>
+    <p>
+      The company generated a total revenue of ₦11 billion, with year-to-date revenue at ₦3 billion, 
+      matching the previous year-to-date but below the ₦8 billion recorded in the same period last year. 
+      Against a total target of ₦8 billion, performance was strong, achieving a ratio of 1.32, 
+      while month-over-month revenue grew by 3%.
+    </p>
+
+    <p>
+      From a geographical perspective, Baesweile stood out as the highest-performing location with ₦52 million, 
+      while Limburg and Eberswalde followed with ₦28 million and ₦27 million, respectively. At the same time, 
+      sales performance against year-to-date targets revealed a shortfall: while the target was ₦3 billion, 
+      actual achievement was ₦2 billion.
+    </p>
+    <img src="/massively-master/images/pharm/Revenue distribution by location.PNG" alt="">
+
+    <p>
+      Channel analysis showed that pharmacies contributed more revenue (₦6 billion) than hospitals (₦5 billion). 
+      Product-wise, analgesics led with ₦2.25 billion, followed by antiseptics (₦2.10 billion) and mood stabilizers (₦1.94 billion). Antimalarials, however, performed the lowest, generating only ₦1.40 billion.
+    </p>
+    <img src="/massively-master/images/pharm/revenue by channle.PNG" alt="">
+    <img src="/massively-master/images/pharm/revenue by product class.PNG" alt="">
+
+    <p>
+      Among sales representatives, Abigail led with ₦0.929 billion, closely trailed by Jimmy (₦0.928 billion) 
+      and Sheila (₦0.903 billion). In terms of target achievement, Stella Given stood out with 1.66%, 
+      followed by Jimmy Grey (1.60%) and Daniel Gates (1.52%), while Anne Wu posted the weakest performance.
+    </p>
+    <img src="/massively-master/images/pharm/actual revenue by sales rep.PNG" alt="">
+    <img src="/massively-master/images/pharm/ww.PNG" alt="">
+
+    <p>
+      Looking at team contributions, Delta Team emerged as the top performer, delivering 30.84% of overall revenue. 
+      Charlie and Bravo Teams contributed 23.97% and 23.39%, respectively, while Alpha Team recorded the lowest 
+      share at 21.79%.
+    </p>
+    <img src="/massively-master/images/pharm/actual revenue achv by sales.PNG" alt="">
+    
+
+    <p>
+      Finally, when analyzing both revenue and sales volume, analgesics once again dominated with ₦2.2 billion in 
+      revenue and 53 million units sold. Antiseptics and mood stabilizers followed with ₦2.1 billion and ₦1.9 billion, 
+      respectively. Antimalarials, despite achieving a massive volume of 1.4 billion units, generated only ₦0.4 billion, 
+      pointing to a significant price-to-volume imbalance.
+    </p>
+    <img src="/massively-master/images/pharm/revenue and volume achv by prod.PNG" alt="">
+
+    <p>
+      In conclusion, while the company has exceeded its overall revenue target, performance gaps exist across certain 
+      products, teams, and sales representatives. Addressing these gaps will be critical to sustaining revenue growth 
+      and achieving consistency in performance across the organization.
+    </p>
+
+    <h2>💡Recommendation</h2>
+    <p>
+      For Sales Representatives: Reps should consistently track their individual performance against targets to identify 
+      gaps early. By doing so, they can adjust their marketing activities—such as customer engagement, product focus, 
+      and channel prioritization—to maximize their revenue contribution
+    </p>
+
+    <p>
+      For Team Managers: Managers should monitor their teams’ performance throughout the reporting periods. 
+      By identifying underperforming members and best practices from high achievers, managers can reallocate resources, 
+      provide targeted training, and plan corrective actions to boost overall team effectiveness.
+    </p>
+
+    <p>
+      For the Executive Team: The leadership should focus on tracking overall revenue trends against set targets to 
+      guide medium- to long-term strategies. Strategic decisions, such as adjusting product pricing 
+      (e.g., antimalarials), reallocating investments between pharmacy and hospital channels, and scaling successful 
+      sales approaches, will help maintain growth momentum and improve alignment with business objectives.
+    </p>
+
+    <h2>📸 Dashboard Screenshot</h2>
+    <img src="/massively-master/images/pharm/dashboare page 1.PNG" alt="Dashboard Screenshot page 1">
+    <img src="/massively-master/images/pharm/dashboard page 2.PNG" alt="Dashboard Screenshot page 2">
+
+    <h2>📥 Files & Demo</h2>
+    <a href="https://drive.google.com/file/d/1ekVJ9MdnxSs1OoYGP6sThf2Cv-9Ir4nv/view?usp=sharing" class="button" target="_blank">Download Excel File</a>
+    <a href="https://drive.google.com/file/d/1exopFgSHUsG0gJPGaUIKNr9tV0AL3Gdp/view?usp=sharing" class="button" target="_blank">Download Dashboard File</a>
+
+    
+  </div>
+
+</body>
+</html>
