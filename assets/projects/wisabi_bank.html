@@ -82,7 +82,7 @@
         (Enugu, Rivers, FCT, Lagos and Kano), saved in different worksheets.</li>
       <li>Each fact table has same 7 columns and a minimum of 300,000 rows. </li>
     </ul>
-    <img src="images/pictures/dataset.PNG" alt="">
+    <img src="../../images/pictures/dataset.PNG" alt="">
   
 
     <h2>🧹 Data Cleaning</h2>
@@ -92,24 +92,24 @@
         TransactionEndTime columns to create Start Time and End Time columns.</li>
       <li>Calculated Transaction Duration by finding the 
         difference between Start Time and End Time.</li>
-            <img src="images/pictures/transaction duration.PNG" alt="">
+            <img src="../../images/pictures/transaction duration.PNG" alt="">
       <li>Created a time_of_day column using a SWITCH statement 
         to group the Start Time values into Night, Morning, Afternoon, and Evening categories.</li>
-          <img src="images/pictures/time of day.PNG" alt="">
+          <img src="../../images/pictures/time of day.PNG" alt="">
       <li>Created an Amount table using the DAX UNION function to combine 
         all transaction amount columns across all tables</li>
-        <img src="images/pictures/all amounts.PNG" alt="">
+        <img src="../../images/pictures/all amounts.PNG" alt="">
       <li>Binned the Amount column in the Amount table into intervals of ₦10,000.</li>
       <li>Created a time_period dimension table to link time periods across all tables.</li>
       <li>Created a Time Table with an Hour column to synchronize time across all tables.</li>
       <li>Developed a DAX measure to calculate the average transaction amount.</li>
-          <img src="images/pictures/overall amount average.PNG" alt="">
+          <img src="../../images/pictures/overall amount average.PNG" alt="">
       <li>Developed a DAX measure to calculate the overall average transaction duration amount.</li>
-          <img src="images/pictures/average duration.PNG" alt="">
+          <img src="../../images/pictures/average duration.PNG" alt="">
       <li>Developed a DAX measure to calculate the overall transaction amount.</li>
-          <img src="images/pictures/overall trans. amount.PNG" alt="">
+          <img src="../../images/pictures/overall trans. amount.PNG" alt="">
       <li>Developed a DAX measure to calculate the total number of transactions.</li>
-          <img src="images/pictures/overall number of trans..PNG" alt="">
+          <img src="../../images/pictures/overall number of trans..PNG" alt="">
     </ul>
 
     <h2>📈 Key Insights</h2>
@@ -125,53 +125,53 @@
         <p>Lagos is the top-performing location with the highest average transaction amount. Most transactions in Lagos are withdrawals, 
         averaging ₦23,300, followed by transfers at ₦20,900. No balance inquiries were made in Lagos during the analysis period. 
         FCT comes next with a similar pattern, while Kano has the lowest transaction volume and value.</p>
-              <img src="images/pictures/avg. trans by state trans type.PNG" alt="">
+              <img src="../../images/pictures/avg. trans by state trans type.PNG" alt="">
         
         <p>When looking at transaction frequency by time of day, Lagos once again leads. 
           The afternoon period (12 p.m. – 6 p.m.) sees the highest activity with 320,000 transactions, followed by 
           evenings (230,000) and mornings (200,000). Kano follows Lagos in afternoon and morning activity, 
           while Port Harcourt records the lowest daily transactions.</p>
-              <img src="images/pictures/trans cout by location.PNG" alt="">
+              <img src="../../images/pictures/trans cout by location.PNG" alt="">
 
         <p>Customers aged 35 and above account for the highest number of transactions, dominated by withdrawals worth ₦10.7 billion, 
           followed by transfers worth ₦4.1 billion. The 25–35 age group follows, also favoring withdrawals.</p>
-              <img src="images/pictures/age group trans type.PNG" alt="">
+              <img src="../../images/pictures/age group trans type.PNG" alt="">
 
         <p>In terms of professions, Human Resource Specialists in the 35+ age group lead with an average transaction amount of ₦20,389 
           across 672 transactions. Electricians aged 25–35 follow with an average of ₦19,663 over 645 transactions, 
           while Welders in the same age range have the lowest average transaction amount (₦17,467) despite a higher transaction count (742).</p>
-              <img src="images/pictures/trans by occup.PNG" alt="">
+              <img src="../../images/pictures/trans by occup.PNG" alt="">
 
         <p>There is a consistent correlation between transaction volume and transaction amount, both showing similar month-to-month fluctuations. 
           March stands out as the peak month with ₦353 million in transaction value and 196,327 transactions. 
           February recorded the lowest figures at ₦290 million and 161,418 transactions. Months such as May, July, October, 
           and December maintained upward trends, while April, June, August, September, and November followed a downward pattern.</p>
-              <img src="images/pictures/trans volum, amount by month.PNG" alt="">
+              <img src="../../images/pictures/trans volum, amount by month.PNG" alt="">
 
         <p>Across all locations, withdrawals remain the most common transaction type, followed by transfers. 
           These transactions are largely conducted by Wisabi Bank customers. Lagos ranks first in transaction counts, 
           followed by Kano, with Rivers State trailing.</p>
-              <img src="images/pictures/trans typ by variat.PNG" alt="">
+              <img src="../../images/pictures/trans typ by variat.PNG" alt="">
 
         <p>Within Lagos, withdrawals account for 19.58% of transactions, transfers for 7.8%, deposits for 3.9%, and balance inquiries 
           for 3.92%. Withdrawals are most frequent in the afternoon, contributing 8.35% to the 15% total transactions during that period.</p>
-              <img src="images/pictures/percentage.PNG" alt="">
+              <img src="../../images/pictures/percentage.PNG" alt="">
 
         <p>Most transactions are between ₦0 and ₦10,000, with a total of 923,521 transactions. Next are ₦10,000–₦20,000 with 436,387 
           transactions and ₦20,000–₦30,000 with 406,888 transactions. The least common is ₦30,000–₦40,000 with 25,511 transactions, 
           while ₦40,000–₦50,000 has 273,604. Large transactions of ₦90,000–₦100,000 total 77,927, with some outliers found in this range.</p>
-              <img src="images/pictures/distribution.PNG" alt="">
+              <img src="../../images/pictures/distribution.PNG" alt="">
 
         <p>Lekki ATM is used the most, followed by Ikorodu. Surprisingly, Sabon Gari ATM has more transactions than Ikorodu but handles 
           less money, meaning it is not fully used in terms of value. This shows that the number of transactions alone doesn’t fully 
           measure ATM performance; the amount of money transacted also matters.</p>
-              <img src="images/pictures/utiliz rate.PNG" alt="">
+              <img src="../../images/pictures/utiliz rate.PNG" alt="">
 
         <p>In terms of transaction duration, Kano customers have the highest average at 4.89 minutes, driven mostly by factory workers 
           (average 5.50 minutes), plumbers, and welders. FCT follows with an average of 4.18 minutes, led by mechanics who are non-Wisabi 
           customers. Enugu records the shortest transaction duration at 3.67 minutes, dominated by farmers performing withdrawals.</p>
-              <img src="images/pictures/avg trns by locat.PNG" alt="">
-              <img src="images/pictures/kano duration.PNG" alt="">
+              <img src="../../images/pictures/avg trns by locat.PNG" alt="">
+              <img src="../../images/pictures/kano duration.PNG" alt="">
     </article>
 
     <h2>💡Reccommendations</h2>
@@ -192,9 +192,9 @@
         </ul>
 
     <h2>📸 Dashboard Screenshot</h2>
-    <img src="images/pictures/1.PNG" alt="dashboard page 1">
-    <img src="images/pictures/2.PNG" alt="dashboard page 2">
-    <img src="images/pictures/3.PNG" alt="dasboard page 3">
+    <img src="../../images/pictures/1.PNG" alt="dashboard page 1">
+    <img src="../../images/pictures/2.PNG" alt="dashboard page 2">
+    <img src="../../images/pictures/3.PNG" alt="dasboard page 3">
 
 
 
